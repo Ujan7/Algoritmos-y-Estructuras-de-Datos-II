@@ -1,0 +1,42 @@
+#include <stdlib.h>  
+#include <stdio.h>   
+#include "pair.h"    
+
+struct s_pair_t {
+    int fst;
+    int snd;
+}; /*Defino aqui mi estructura, logro aun mas el encapsulamiento*/
+
+pair_t pair_new(elem x, elem y)
+{
+    pair_t res = malloc (sizeof(struct s_pair_t));
+    
+    res->fst = x;
+    res->snd = y;
+
+    return res;
+}
+
+elem pair_first(pair_t p)
+{
+    return p->fst;
+}
+
+elem pair_second(pair_t p)
+{
+    return p->snd;
+}
+
+pair_t pair_swapped(pair_t p)
+{
+    pair_t pSwapped = malloc(sizeof(struct s_pair_t));
+    pSwapped->fst = p->snd;
+    pSwapped->snd = p->fst;
+    return pSwapped;
+}
+
+pair_t pair_destroy(pair_t p)
+{
+    free(p);
+    return p;
+}
